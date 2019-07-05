@@ -14,9 +14,89 @@ body {
   background-color: @app-background-color;
 }
 
-atom-pane {
-  border-right: 1px solid @base-border-color;
-  &:last-child {
-    border-right: none;
+atom-workspace {
+  background-color: fade(@base-background-color, 25%);
+  background-image: @background-image;
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: soft-light;
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: radial-gradient(circle, transparent 50%, #000 140%);
+    mix-blend-mode: darken;
   }
+}
+
+atom-dock {
+  .atom-dock-resize-handle {
+    background: @base-background-color;
+  }
+  .atom-dock-mask {
+    background: fade(@base-background-color, 30%);
+  }
+}
+
+atom-pane-container {
+  background: none;
+  atom-pane {
+    border-right: 1px solid @base-border-color;
+    &:last-child {
+      border-right: none;
+    }
+    .item-views .pane-item {
+      background: fade(@alt-background-color, 80%);
+    }
+  }
+}
+
+atom-text-editor {
+  background-color: fade(@base-background-color, 65%);
+  .gutter {
+    background-color: fade(@base-background-color, 65%);
+    border-right: 1px solid fade(@base-background-color, 40%);
+    .line-number {
+      color: #fff;
+      &.folded {
+        color: darken(#fff, 60%);
+      }
+      .icon-right {
+        color: inherit;
+      }
+    }
+  }
+}
+
+
+.line > span:not(:empty) {
+    background: fade(@base-background-color, 45%);
+    border-radius: 0 4px 4px 0px;
+    box-shadow: 0 0 4px fade(@base-background-color, 45%);
+    margin: 0 -10px;
+    padding: 0 10px;
+}
+
+atom-panel-container {
+  &.bottom {
+    border-top: 2px solid @base-background-color;
+  }
+  .tool-panel {
+    background: fade(@base-background-color, 30%);
+  }
+}
+
+
+.settings-view {
+  .config-menu {
+    background: none;
+  }
+  .package-card {
+    background-color: fade(@alt-background-color, 65%);
+    &:hover {
+      background-color: @alt-background-color;
+    }
+  }
+
 }
